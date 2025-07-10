@@ -18,34 +18,42 @@ class Product:
 
 
     def get_quantity(self):
+        """Returns the quantity of the product."""
         return self.quantity
 
     def get_price(self):
+        """Returns the price of the product."""
         return self.price
 
     def set_quantity(self, quantity):
+        """Sets the quantity of the product."""
         self.quantity = quantity
         if quantity == 0:
             self.active = False
 
 
     def is_active(self):
+        """Returns True if the product is active."""
         return self.active
 
 
     def activate(self):
+        """Activates the product."""
         self.active = True
 
 
     def deactivate(self):
+        """Deactivates the product."""
         self.active = False
 
 
     def show(self):
+        """Shows the product in an f-string."""
         return f"{self.name}, Price: {self.price}, Quantity: {self.quantity}"
 
 
     def buy(self, quantity):
+        """changes the quantity of the product, returns the price, and runs validation"""
         if self.quantity < quantity:
             raise ValueError('Not enough in stock')
         self.quantity -= quantity

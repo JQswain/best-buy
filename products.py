@@ -1,4 +1,5 @@
 class Product:
+    """The product class has attributes of name, price, quantity and if it is active"""
     def __init__(self, name, price, quantity):
         if not name:
             raise ValueError("Name cannot be empty")
@@ -63,6 +64,7 @@ class Product:
 
 
 def main():
+    """Test of methods"""
     bose = Product("Bose QuietComfort Earbuds", 250, 500)
     mac = Product("MacBook Air M2", 1450, 100)
 

@@ -10,7 +10,7 @@ product_list = [ products.Product("MacBook Air M2", price=1450, quantity=100),
 best_buy = store.Store(product_list)
 
 def list_products(store_object):
-    """lists the products availble for the user"""
+    """lists the products available for the user"""
     inactive = [p for p in store_object.get_all_products() if p.get_quantity() == 0]
     for product in inactive:
         store_object.remove_product(product)
@@ -28,10 +28,10 @@ def make_order(store_object):
 
     shopping_list = []
     list_products(store_object)
-    product_list = store_object.get_all_products()
+    available_products = store_object.get_all_products()
 
     while True:
-        product_choice = (input(f"""
+        product_choice = (input("""
 When you would like to finish the order please type 'e' for end.
 Enter product number you would you like to buy: 
 """))
@@ -40,10 +40,10 @@ Enter product number you would you like to buy:
 
         try:
             product_index = int(product_choice) - 1
-            if product_index < 0 or product_index >= len(product_list):
+            if product_index < 0 or product_index >= len(available_products):
                 print("Invalid product number.")
                 continue
-            product = product_list[product_index]
+            product = available_products[product_index]
         except ValueError:
             print("Please enter a valid number.")
             continue
@@ -63,14 +63,14 @@ Enter product number you would you like to buy:
 
 
 def start(store_object):
-    """Shows the user interface, and access pre defined functions"""
+    """Shows the user interface and access pre-defined functions"""
     store_actions = {
         "1": ("List all products", list_products),
         "2": ("Show total amount", total_quantity),
         "3": ("Make an order", make_order),
     }
     while True:
-        print(f"""
+        print("""
                  Store Menu
             --------------------
         1. List all products in store

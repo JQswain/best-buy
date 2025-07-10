@@ -1,8 +1,9 @@
 import products
 
 class Store:
-    def __init__(self, products):
-        self.products = products
+    """The Store class, has only one variable, a list of products"""
+    def __init__(self, products_list):
+        self.products = products_list
 
     def add_product(self, product):
         """Adds a new product to the store"""
@@ -29,7 +30,8 @@ class Store:
         return product_list
 
     def order(self, shopping_list) -> float | None:
-        """Updates the quantity of products and returns a total price for the quantity in the order"""
+        """Updates the quantity of products and
+        returns a total price for the quantity in the order"""
         total_price = 0
         for product, quantity in shopping_list:
             product.buy(quantity)
@@ -38,6 +40,7 @@ class Store:
         return total_price
 
 def main():
+    """Test of methods"""
     product_list = [products.Product("MacBook Air M2", 1450, 100),
                     products.Product("Bose QuietComfort Earbuds", 250, 500),
                     products.Product("Google Pixel 7", 500, 250),

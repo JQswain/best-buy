@@ -20,6 +20,8 @@ class Product:
     def get_quantity(self):
         return self.quantity
 
+    def get_price(self):
+        return self.price
 
     def set_quantity(self, quantity):
         self.quantity = quantity

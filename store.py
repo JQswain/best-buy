@@ -11,20 +11,25 @@ class Store:
         self.products.remove(product)
 
     def get_total_quantity(self) -> int:
-        return len(self.products)
+        total_quantity = 0
+        for product in self.products:
+            total_quantity += product.get_quantity()
+        return total_quantity
+
 
     def get_all_products(self) -> list[products.Product]:
         product_list = []
         for product in self.products:
-            if product.active:
+            if product.is_active():
                 product_list.append(product)
         return product_list
 
     def order(self, shopping_list) -> float:
         total_price = 0
         for product, quantity in shopping_list:
-            product.buy(quantity)
-            total_price += product.price * quantity
+            if product.is_active():
+                product.buy(quantity)
+                total_price += product.get_price() * quantity
         return total_price
 
 def main():

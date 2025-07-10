@@ -52,16 +52,19 @@ class Product:
         return self.price * self.quantity
 
 
+def main():
+    bose = Product("Bose QuietComfort Earbuds", 250, 500)
+    mac = Product("MacBook Air M2", 1450, 100)
 
-bose = Product("Bose QuietComfort Earbuds", 250, 500)
-mac = Product("MacBook Air M2", 1450, 100)
+    print(bose.buy(50))
+    print(mac.buy(100))
+    print(mac.is_active())
 
-print(bose.buy(50))
-print(mac.buy(100))
-print(mac.is_active())
+    print(bose.show())
+    print(mac.show())
 
-print(bose.show())
-print(mac.show())
+    bose.set_quantity(1000)
+    print(bose.show())
 
-bose.set_quantity(1000)
-print(bose.show())
+if __name__ == "__main__":
+    main()
